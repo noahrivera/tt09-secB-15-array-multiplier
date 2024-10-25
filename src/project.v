@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Your Name
+ * Copyright (c) 2024 Noah Rivera
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -23,13 +23,13 @@ module tt_um_secB_15_array_multiplier (
   wire [3:0] q = ui_in[3:0];
   wire [7:0] p;
 
-  wire carry_l, carry_2, carry_3, carry_4, carry_5, carry_6, carry_7, carry_8, carry_9, carry_l0, carry_11;
+  wire carry_1, carry_2, carry_3, carry_4, carry_5, carry_6, carry_7, carry_8, carry_9, carry_10, carry_11;
   wire sum_1, sum_2, sum_3, sum_4, sum_5, sum_6;
   
   assign p[0] = m[0] & q[0];
 
   Fadder A1 (m[0] & q[1], m[1] & q[0], 1'b0, p[1], carry_1);
-  Fadder A2 (m[2] & q[0], m[1] & q[1], carry_l, sum_1, carry_2);
+  Fadder A2 (m[2] & q[0], m[1] & q[1], carry_1, sum_1, carry_2);
   Fadder A3 (m[3] & q[0], m[2] & q[1], carry_2, sum_2, carry_3);
   Fadder A4 (m[3] & q[1], 1'b0, carry_3, sum_3, carry_4);
 
