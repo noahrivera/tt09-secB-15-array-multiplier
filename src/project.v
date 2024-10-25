@@ -40,7 +40,7 @@ module tt_um_secB_15_array_multiplier (
 
   Fadder A9 (m[0] & q[3], sum_4, , 1'b0, p[3], carry_9);
   Fadder A10 (m[1] & q[3], sum_5, carry_9, p[4], carry_10);
-  Fadder A11 (m[2] & q[3], sum_6, carry_10, P[5], carry_11);
+  Fadder A11 (m[2] & q[3], sum_6, carry_10, p[5], carry_11);
   Fadder A12 (m[3] & q[3], carry_8, carry_11, p[6], p[7]);
 
   assign uo_out = p;
