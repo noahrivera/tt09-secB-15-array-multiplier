@@ -23,17 +23,27 @@ module tt_um_secB_15_array_multiplier (
   wire [3:0] q = ui_in[3:0];
   wire [7:0] p;
 
-  always @(*) begin
-      p = 0; // Initialize product to 0
-      for (integer i = 0; i < 4; i = i + 1) begin
-          if (q[i]) begin
-              p = p + (m << i); // Shift and add
-          end
-      end
-  end
+  wire carry_l, carry_2, carry_3, carry_4, carry_5, carry_6, carry_7, carry_8, carry_9, carry_l0, carry_11;
+  wire sum_1, sum_2, sum_3, sum_4, sum_5, sum_6;
+  
+  assign p[0] = m[0] & q[0];
+
+  Fadder A1 (m[0] & q[1], m[1] & q[0], 1'b0, p[1], carry_1);
+  Fadder A2 (m[2] & q[0], m[1] & q[1], carry_l, sum_1, carry_2);
+  Fadder A3 (m[3] & q[0], m[2] & q[1], carry_2, sum_2, carry_3);
+  Fadder A4 (m[3] & q[1], 1'b0, carry_3, sum_3, carry_4) ;
+
+  Fadder A5 (m[0] & q[2], sum_1, 1'b0, p[2], carry_5) ;
+  Fadder A6 (m[1] & q[2], sum_2, carry_5, sum_4, carry_6);
+  Fadder A7 (m[2] & q[2], sum_3, carry_6, sum_5, carry_7) ;
+  Fadder A8 (m[3] & q[2], carry_4, carry_7, sum_6, carry_8);
+
+  Fadder A9 (m[0] & q[3], sum_4, , 1'b0, p[3], carry_9);
+  Fadder A10 (m[1] & q[3], sum_5, carry_9, p[4], carry_10);
+  Fadder A11 (m[2] & q[3], sum_6, carry_10, P[5], carry_11);
+  Fadder A12 (m[3] & q[3], carry_8, carry_11, p[6], p[7]);
 
   assign uo_out = p;
-  
   assign uio_out = 0;
   assign uio_oe  = 0;
 
@@ -43,7 +53,22 @@ module tt_um_secB_15_array_multiplier (
 endmodule
 
 module array_mult_structural (
-    input [3:0} m,
-    input [3:0} q,
-    output reg [7:0} p
+    input [3:0] m,
+    input [3:0] q,
+    output reg [7:0] p
 );
+
+endmodule
+
+module Fadder (
+  input m,
+  input q,
+  input cin,
+  output sum,
+  output cout
+);
+
+  assign sum = m ^ q ^ cin;
+  assign cout = (cin & (m^q)) | (m&q);
+
+endmodule
