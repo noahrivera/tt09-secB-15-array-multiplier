@@ -7,6 +7,10 @@ You can also include images in this folder and reference them in the markdown. E
 512 kb in size, and the combined size of all images must be less than 1 MB.
 -->
 
+## 4x4 Array Multiplier Block Diagram
+
+![image](https://github.com/user-attachments/assets/5e0f939f-0a14-4b8c-aa17-68fe662b773c)
+
 ## How it works
 
 The 4x4 array multiplier operates by multiplying two 4-bit binary numbers to produce an 8-bit number. The process is performed by generating partial products through a series of AND operations between each bit of the first 4-bit binary number (X) and the second 4-bit binary number (Y). This results in a total of 16 partial products, which correspond to the multiplicative contributions of each bit in X with each bit in Y. Once the partial products are generated, they are aligned according to their significance in the binary numeral system, to achieve the proper placement of each product. The result is achieved by summing up these aligned partial products by using a series of full adders to manage the addition and carry bits.
