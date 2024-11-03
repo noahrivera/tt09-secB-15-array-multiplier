@@ -9,7 +9,7 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## 4x4 Array Multiplier Block Diagram
 
-![image](https://github.com/user-attachments/assets/5e0f939f-0a14-4b8c-aa17-68fe662b773c)
+![4x4 Array Multiplier Block Diagram](https://github.com/user-attachments/assets/e1e779da-65c7-4978-a797-67d91f218a2e)
 
 ## How it works
 
